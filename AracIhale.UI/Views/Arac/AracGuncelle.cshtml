@@ -1,0 +1,177 @@
+﻿
+@{
+    Layout = "~/Views/Shared/AdminTemplate.cshtml";
+}
+
+@using AracIhale.Entities.VM
+@model AracEkleVM
+
+@using (Html.BeginForm("AracGuncelle", "Arac", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    
+        <div class="form-body">
+            <div class="row">
+                <div class="form-holder">
+                    <div class="form-content">
+                        <div class="form-items">
+                            <h3>Register Today</h3>
+                            <p>Fill in the data below.</p>
+                            <!--<form class="requires-validation" novalidate>-->
+
+                            @Html.HiddenFor(x => x.AracId)
+
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(x => x.MarkaId, new { @class = "col-md-4 control-label" })
+                                <div class="inputGroupContainer">
+                                    <div class="input-group">
+                                        @Html.DropDownListFor(x => x.MarkaId, Model.Markalar, new { @class = "form-select", required = true })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(x => x.ModelId, new { @class = "col-md-4 control-label" })
+                                <div class="inputGroupContainer">
+                                    <div class="input-group">
+                                        @Html.DropDownListFor(x => x.ModelId, Model.Modeller, new { @class = "form-select", required = true })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(x => x.StatuId, new { @class = "col-md-4 control-label" })
+                                <div class="inputGroupContainer">
+                                    <div class="input-group">
+                                        @Html.DropDownListFor(x => x.StatuId, Model.Statuler, new { @class = "form-select", required = true })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(x => x.FirmaId, new { @class = "col-md-4 control-label" })
+                                <div class="inputGroupContainer">
+                                    <div class="input-group">
+                                        @Html.DropDownListFor(x => x.FirmaId, Model.Firmalar, new { @class = "form-select", required = true })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(x => x.UyeId, new { @class = "col-md-4 control-label" })
+                                <div class="inputGroupContainer">
+                                    <div class="input-group">
+                                        @Html.DropDownListFor(x => x.UyeId, Model.Uyeler, new { @class = "form-select", required = true })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(x => x.GovdeTipiId, new { @class = "col-md-4 control-label" })
+                                <div class="inputGroupContainer">
+                                    <div class="input-group">
+                                        @Html.DropDownListFor(x => x.GovdeTipiId, Model.GovdeTipleri, new { @class = "form-select", required = true })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(x => x.YakitTipiId, new { @class = "col-md-4 control-label" })
+                                <div class="inputGroupContainer">
+                                    <div class="input-group">
+                                        @Html.DropDownListFor(x => x.YakitTipiId, Model.YakitTipleri, new { @class = "form-select", required = true })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(x => x.VitesTipiId, new { @class = "col-md-4 control-label" })
+                                <div class="inputGroupContainer">
+                                    <div class="input-group">
+                                        @Html.DropDownListFor(x => x.VitesTipiId, Model.VitesTipleri, new { @class = "form-select", required = true })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(x => x.VersiyonId, new { @class = "col-md-4 control-label" })
+                                <div class="inputGroupContainer">
+                                    <div class="input-group">
+                                        @Html.DropDownListFor(x => x.VersiyonId, Model.Versiyonlar, new { @class = "form-select", required = true })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(x => x.RenkId, new { @class = "col-md-4 control-label" })
+                                <div class="inputGroupContainer">
+                                    <div class="input-group">
+                                        @Html.DropDownListFor(x => x.RenkId, Model.Renkler, new { @class = "form-select", required = true })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(x => x.DonanimId, new { @class = "col-md-4 control-label" })
+                                <div class="inputGroupContainer">
+                                    <div class="input-group">
+                                        @Html.DropDownListFor(x => x.DonanimId, Model.OpsiyonelDonanimlar, new { @class = "form-select", required = true })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-outline mb-4">
+                                    @Html.LabelFor(x => x.Plaka, new { @class = "col-md-4 control-label" })
+                                    @Html.TextBoxFor(x => x.Plaka, new
+                                    {
+                                        @class = "form-control form-control-lg",
+                                        placeholder = "Plaka"
+                                    })
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-outline mb-4">
+                                    @Html.LabelFor(x => x.Fiyat, new { @class = "col-md-4 control-label" })
+                                    @Html.TextBoxFor(x => x.Fiyat, new
+                                    {
+                                        @class = "form-control form-control-lg",
+                                        placeholder = "Fiyat"
+                                    })
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-outline mb-4">
+                                    @Html.LabelFor(x => x.Yil, new { @class = "col-md-4 control-label" })
+                                    @Html.TextBoxFor(x => x.Yil, new
+                                    {
+                                        @class = "form-control form-control-lg",
+                                        placeholder = "Yıl"
+                                    })
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-outline mb-4">
+                                    @Html.LabelFor(x => x.Km, new { @class = "col-md-4 control-label" })
+                                    @Html.TextBoxFor(x => x.Km, new
+                                    {
+                                        @class = "form-control form-control-lg",
+                                        placeholder = "Km"
+                                    })
+                                </div>
+                            </div>
+
+                            <div class="form-button mt-3">
+                                <button id="submit" type="submit" class="btn btn-primary">Register</button>
+                            </div>
+                            <!--</form>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+}

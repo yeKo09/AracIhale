@@ -1,0 +1,55 @@
+﻿
+@{
+    Layout = "~/Views/Shared/AdminTemplate.cshtml";
+}
+
+@using AracIhale.Entities.VM
+@model List<KullaniciVeRolVM>
+
+<div class="mb-3">
+    @Html.ActionLink("Kullanıcı Ekle", "KullaniciEkle", null, new { @class = "btn btn-outline-info" })
+</div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <!--<th scope="col">#</th>-->
+                    <th scope="col">İsmi</th>
+                    <th scope="col">Soyismi</th>
+                    <th scope="col">Kullanıcı Adı</th>
+                    <th scope="col">Mail Adresi</th>
+                    <th scope="col">Telefonu</th>
+                    <th scope="col">Rolü</th>
+                    <th scope="col">Aktif Mi</th>
+                    <th scope="col">Güncelle</th>
+                    <th scope="col">Sil</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>@item.Isim</td>
+                    <td>@item.Soyisim</td>
+                    <td>@item.KullaniciAdi</td>
+                    <td>@item.Mail</td>
+                    <td>@item.Telefon</td>
+                    <td>@item.RolAdi</td>
+                    <td>@item.AktifMi</td>
+                    <td>
+                        @Html.ActionLink("Güncelle", "KullaniciGuncelle", new
+                   {
+                       @kullaniciId = item.KullaniciId,
+                   }, new { @class = "btn btn-success" })
+                    </td>
+                    <td>
+                        @Html.ActionLink("Sil", "KullaniciSil", new
+                   {
+                       @kullaniciId = item.KullaniciId,
+                   }, new { @class = "btn btn-danger"})
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+  

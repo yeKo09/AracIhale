@@ -1,0 +1,53 @@
+﻿@{
+    Layout = "~/Views/Shared/AdminTemplate.cshtml";
+}
+
+@using AracIhale.Entities.VM
+@model List<AracVM>
+
+<div class="mb-3">
+    @Html.ActionLink("Arac Ekle", "AracEkle", null, new { @class = "btn btn-outline-info" })
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <!--<th scope="col">#</th>-->
+            <th scope="col">Plaka</th>
+            <th scope="col">Marka</th>
+            <th scope="col">Model</th>
+            <th scope="col">Bireysel / Kurumsal</th>
+            <th scope="col">Statü</th>
+            @*<th scope="col">Kaydeden Kullanıcı</th>
+                <th scope="col">Kaydedilen Zaman</th>*@
+            <th scope="col">Güncelle</th>
+            <th scope="col">Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Plaka</td>
+                <td>@item.MarkaAdi</td>
+                <td>@item.ModelAdi</td>
+                <td>@item.BireyselMi</td>
+                <td>@item.Statu</td>
+                @*<td>@item.KaydedenKullanici</td>
+                    <td>@item.Kaydede</td>*@
+                <td>
+                    @Html.ActionLink("Güncelle", "AracGuncelle", new
+               {
+                   @aracId = item.AracId,
+               }, new { @class = "btn btn-success" })
+                </td>
+                 <td>
+                         @Html.ActionLink("Sil", "KullaniciSil", new
+                    {
+                        @aracId = item.AracId,
+                    }, new { @class = "btn btn-danger" })
+                 </td>
+            </tr>
+        }
+    </tbody>
+</table>
